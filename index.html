@@ -21,29 +21,31 @@
   /* embed your mandala image directly */
   #art{position:absolute;inset:0;
     background:url("mandala.jpg") center/cover no-repeat;
-    filter:contrast(1.06) saturate(1.03)}
-  #glow{
-    position:absolute;inset:0;border-radius:50%;
-    background:
-      radial-gradient(35% 35% at 50% 50%, rgba(255,220,120,.35), transparent 70%),
-      radial-gradient(70% 70% at 50% 50%, rgba(120,210,255,.10), transparent 75%);
-    mix-blend-mode:screen;
-    opacity:.75;
-    transform:scale(1);
-  }
-  .rim{position:absolute;inset:0;border-radius:50%;
-    box-shadow:0 0 0 2px rgba(255,255,255,.06) inset}
-  /* breathing animation */
-  .pulse #glow{
-    animation: breath calc(var(--inhale) + var(--hold) + var(--exhale))
-              cubic-bezier(.45,.05,.25,1) infinite;
-  }
-  @keyframes breath{
-    0%   { transform:scale(1.00); filter:blur(0px); }
-    45%  { transform:scale(1.06); filter:blur(1.4px); }
-    60%  { transform:scale(1.06); filter:blur(1.4px); }
-    100% { transform:scale(1.00); filter:blur(0px); }
-  }
+    filter:contrast(1.06) saturate(/* put this where #glow and @keyframes live */
+#glow{
+  position:absolute;inset:0;border-radius:50%;
+  /* brighter center + wide halo */
+  background:
+    radial-gradient(32% 32% at 50% 50%, rgba(255,230,140,.55), transparent 72%),
+    radial-gradient(80% 80% at 50% 50%, rgba(140,220,255,.20), transparent 78%);
+  mix-blend-mode:screen;
+  opacity:1;                 /* <- was .75 */
+  transform:scale(1);
+  filter:blur(0.6px);
+}
+
+/* stronger breathing motion */
+.pulse #glow{
+  animation:breath calc(var(--inhale) + var(--hold) + var(--exhale))
+           cubic-bezier(.45,.05,.25,1) infinite;
+}
+
+@keyframes breath{
+  0%   { transform:scale(0.97); filter:blur(0.4px); box-shadow:0 0 20px 6px rgba(255,230,140,.25); }
+  45%  { transform:scale(1.10); filter:blur(1.6px); box-shadow:0 0 90px 28px rgba(255,230,140,.40); } /* inhale */
+  60%  { transform:scale(1.10); filter:blur(1.6px); box-shadow:0 0 90px 28px rgba(255,230,140,.40); } /* hold   */
+  100% { transform:scale(0.97); filter:blur(0.4px); box-shadow:0 0 24px 8px rgba(255,230,140,.28); } /* exhale */
+}
   .bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   button,input[type="range"]{
     background:#141b2d;color:#e6ecff;border:1px solid #2a3556;border-radius:8px;
