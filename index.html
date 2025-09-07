@@ -22,6 +22,7 @@
   #art{position:absolute;inset:0;
     background:url("mandala.jpg") center/cover no-repeat;
     filter:contrast(1.06) saturate(/* put this where #glow and @keyframes live */
+/* put this where #glow and @keyframes live */
 #glow{
   position:absolute;inset:0;border-radius:50%;
   /* brighter center + wide halo */
@@ -45,6 +46,7 @@
   45%  { transform:scale(1.10); filter:blur(1.6px); box-shadow:0 0 90px 28px rgba(255,230,140,.40); } /* inhale */
   60%  { transform:scale(1.10); filter:blur(1.6px); box-shadow:0 0 90px 28px rgba(255,230,140,.40); } /* hold   */
   100% { transform:scale(0.97); filter:blur(0.4px); box-shadow:0 0 24px 8px rgba(255,230,140,.28); } /* exhale */
+}
 }
   .bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   button,input[type="range"]{
@@ -77,6 +79,16 @@
   </div>
 </div>
 
+  <button id="glowboost">glow: max</button>
+<script>
+document.getElementById('glowboost').onclick = () => {
+  const g = document.getElementById('glow');
+  g.style.background =
+    'radial-gradient(32% 32% at 50% 50%, rgba(255,240,160,.75), transparent 72%),' +
+    'radial-gradient(90% 90% at 50% 50%, rgba(140,220,255,.30), transparent 80%)';
+};
+</script>
+  
 <script>
 (() => {
   const root=document.documentElement;
