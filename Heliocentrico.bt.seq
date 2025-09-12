@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "id": "btseq-heliocentrico",
+  "title": "Heliocentrico — Spiral of the Sun",
+  "bpm": 82,
+  "audio": { "file": "Heliocentrico.mp3", "beatOffsetSec": 0.12 },
+  "cycle": { "inhale": 4.8, "hold_top": 1.1, "exhale": 5.6, "hold_bottom": 1.0 },
+  "cycles_per_block": 6,
+  "blocks": [
+    { "label": "intro",  "cycles": 2, "scale": 0.90 },
+    { "label": "main",   "cycles": 8, "scale": 1.00 },
+    { "label": "soften", "cycles": 4, "scale": 0.85 }
+  ],
+  "glow": { "min": 0.35, "max": 1.00, "easing": "cosine", "overshoot": 0.07 },
+  "cues": [
+    { "t": "pre",   "at_sec": 0,          "say": "tap to begin — breathe with the spiral" },
+    { "t": "start", "at_beat": 1 },
+    { "t": "text",  "at_cycle": 1,                      "say": "inhale with the glow" },
+    { "t": "text",  "at_cycle": 1, "phase": "exhale",   "say": "exhale as it softens" },
+    { "t": "text",  "at_cycle": 8,                      "say": "let the shoulders drop" },
+    { "t": "end",   "after_blocks": 1 }
+  ],
+  "safety": { "max_session_min": 8, "notes": "stop if dizzy; breathe gently" },
+  "copyright": { "by": "c3 Codex", "date": "2025-09-12" }
+}
